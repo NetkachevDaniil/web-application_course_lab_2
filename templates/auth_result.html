@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}ЛР2 - Результат формы{% endblock %}
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h1 class="h4">Данные формы авторизации</h1>
+        <p>Логин: {{ login }}</p>
+        <p>Пароль: {{ password }}</p>
+
+        <h2 class="h6">Параметры формы</h2>
+        <ul class="mb-0">
+            {% for key, value in form_data %}
+                <li>{{ key }}: {{ value }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

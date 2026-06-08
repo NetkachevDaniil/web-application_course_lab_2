@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}ЛР2 - Данные запроса{% endblock %}
+{% block content %}
+<h1 class="h4 mb-3">Данные текущего запроса</h1>
+
+<div class="row g-3">
+    <div class="col-md-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-header">Параметры URL</div>
+            <ul class="list-group list-group-flush">
+                {% for key, value in url_params %}
+                    <li class="list-group-item"><strong>{{ key }}</strong>: {{ value }}</li>
+                {% else %}
+                    <li class="list-group-item text-muted">Параметров нет</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card shadow-sm h-100">
+            <div class="card-header">Cookie</div>
+            <ul class="list-group list-group-flush">
+                {% for key, value in cookies %}
+                    <li class="list-group-item"><strong>{{ key }}</strong>: {{ value }}</li>
+                {% else %}
+                    <li class="list-group-item text-muted">Cookie отсутствуют</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm mt-3">
+    <div class="card-header">Заголовки запроса</div>
+    <div class="card-body table-responsive">
+        <table class="table table-sm align-middle">
+            <thead>
+            <tr><th>Заголовок</th><th>Значение</th></tr>
+            </thead>
+            <tbody>
+            {% for key, value in headers %}
+                <tr><td>{{ key }}</td><td>{{ value }}</td></tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
